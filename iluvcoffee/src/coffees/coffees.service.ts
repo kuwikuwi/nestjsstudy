@@ -36,7 +36,9 @@ findAll(paginationQuery: PaginationQueryDto) {
 
 async findOne(id: string) {
     const coffee = await this.coffeeRepository.findOne(
-        {relations: ['flavors']
+        {
+            where: {id: +id},
+            relations: ['flavors']
     });
     
     if (!coffee) {

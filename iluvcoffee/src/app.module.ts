@@ -10,7 +10,6 @@ import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
 import appConfig from './config/app.config';
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -21,7 +20,7 @@ import appConfig from './config/app.config';
       // }),
     }),
     CoffeesModule,
-    TypeOrmModule.forRootAsync({ // <--- 이 설정만 남깁니다.
+    TypeOrmModule.forRootAsync({ // 비동기로 변수들의 값을 가져오는 것
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
